@@ -27,6 +27,16 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     return std::move(contents);
 }
 
+
+int UserInput(std::string prompt)
+{
+    int input;
+    std::cout << prompt;
+    std::cin >> input;
+    return input;
+}
+
+
 int main(int argc, const char **argv)
 {
     std::string osm_data_file = "";
@@ -55,18 +65,10 @@ int main(int argc, const char **argv)
     // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
-    float start_x;
-    float start_y;
-    float end_x;
-    float end_y;
-    std::cout << "Enter start_x: ";
-    std::cin >> start_x;
-    std::cout << "Enter start_y: ";
-    std::cin >> start_y;
-    std::cout << "Enter end_x: ";
-    std::cin >> end_x;
-    std::cout << "Enter end_y: ";
-    std::cin >> end_y;
+    float start_x = UserInput("Enter start_x: ");
+    float start_y = UserInput("Enter start_y: ");
+    float end_x = UserInput("Enter end_x: ");
+    float end_y = UserInput("Enter end_y: ");
 
     // Build Model.
     RouteModel model{osm_data};
